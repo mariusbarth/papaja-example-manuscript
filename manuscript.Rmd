@@ -55,6 +55,7 @@ output            : papaja::apa6_pdf  # For DOCX try papaja::apa6_docx
 library("papaja")
 library("afex")
 library("emmeans")
+library("BayesFactor")
 ```
 
 ```{r preferences}
@@ -378,6 +379,29 @@ out <- apa_print(
 The mean RTs obtained over training blocks are shown in the left panel of Figure \@ref(fig:acquisition-rt), separately for permuted and random material (in this and all following training-phase analyses, we excluded RTs of the first trial of each block and of trials that resulted in an error). 
 Analysing RTs using a 2 (*material*: permuted vs. random) $\times$ 6 (*block number*) ANOVA revealed a significant main effect of *material*, `r out$full_result$material`, with slower responses for random material than for permuted material, and a significant main effect of *block number*, `r out$full_result[["block"]]`, reflecting practice effects. 
 The factors *material* and *block number* did not interact, `r out$full_result[["material_block"]]`, indicating that any knowledge was acquired already during the first block. 
+
+```{r cache = TRUE}
+# Conduct equivalent analyses the Bayesian way
+agg <- aggregate(SRI ~ material + block + id, data = tmp, FUN = mean)
+agg$id <- factor(agg$id)
+
+bf_rts <- anovaBF(
+  formula = SRI ~ material * block + id
+  , data = agg
+  , whichRandom = "id"
+  , whichModels = "top"
+)
+
+apa_bf_rts <- apa_print(bf_rts, reciprocal = TRUE)
+```
+
+Conducting a similar 2 (*material*: permuted vs. random) $\times$ 6 (*block number*) Bayesian ANOVA,
+we found an effect of *block*,
+`r apa_bf_rts$block`,
+indicating that response times decreased over blocks.
+We did not find strong evidence for a main effect of *material*,
+`r_apa_bf_rts$material`.
+<!-- What about the interaction term? I'm lost!!! -->
 
 For the group with permuted material, some locations were presented twice within each pseudo-sequence. 
 The right panel of Figure \@ref(fig:acquisition-rt) shows the mean RTs for these two types of stimuli. A 2 (*frequency*: high vs. low) $\times$ 6 (*block number*) ANOVA revealed a main effect of *frequency*, `r out.perm$full_result$frequency`; high-frequency responses were faster than low-frequency responses. 
