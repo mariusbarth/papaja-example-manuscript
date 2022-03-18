@@ -41,9 +41,8 @@ apa_table(
   , caption = "(ref:table-caption)"
   , midrules = seq(4, 12, 4)
   , format.args = list(gt1 = FALSE) # suppress leading zeros
+  , placement = NULL
 )
-
-
 ```
 
 
