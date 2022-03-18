@@ -125,7 +125,7 @@ Although this type of knowledge is unspecific and sequence-unrelated, it may nev
 
 ## Goal of the present study
 
-To gauge these threats to the validity of the PD in sequence learning, and to examine the conditions under which PD can help to understand the processes underlying sequence learning, we investigated the possiblity of differential effects of material (permuted vs. random), task format (free vs. cued generation), and response tendencies on generation performance under inclusion and exclusion conditions. 
+To gauge these threats to the validity of the PD in sequence learning, and to examine the conditions under which PD can help to understand the processes underlying sequence learning, we investigated the possibility of differential effects of material (permuted vs. random), task format (free vs. cued generation), and response tendencies on generation performance under inclusion and exclusion conditions. 
 
 ### Simple frequency information and sequence-unrelated properties
 
@@ -150,7 +150,7 @@ In cued generation, on the other hand, on each trial, a small sequence of stimul
 The results obtained with both tasks have been found to diverge: Using free generation task, @destrebecqz_can_2001 reported evidence for implicit knowledge (i.e., exclusion performance was above baseline). 
 In contrast, @wilkinson_intentional_2004 could not replicate this $E>B$ finding using a cued generation task. 
 The type of generation task may explain this discrepancy if cued generation artificially lowers (or free generation artificially boosts) exclusion performance [but see @fu_implicit_2008, for a reward-based explanation]. 
-Alternatively, the failure to find $E>B$ in cued generation may be taken as evidence for the suboptimal sensitivity of the cued generation task.
+Alternatively, the failure to find $E>B$ in cued generation may be taken as evidence for the sub-optimal sensitivity of the cued generation task.
 The present study compares free and cued generation tasks and their ability to detect learning of sequence-unspecific properties.
 
 ### Response tendencies and subjective intuitions about randomness
@@ -169,7 +169,7 @@ and perhaps lead to systematic differences between inclusion and exclusion.
 In addition, response tendencies informed by frequency information may interact with variants of the generation task.
 For instance, if participants have a tendency to avoid generating recent response locations [@boyer_processing_2005],
 the simple frequency information about reversals or high- versus low-frequency response location may differentially affect performance under different generation task variants (free or cued).
-The present study explores such potential interactive effects of simple frequency information, task format, and reponse tendencies.
+The present study explores such potential interactive effects of simple frequency information, task format, and response tendencies.
 
 ## The current study
 
@@ -268,7 +268,7 @@ To determine correct responses in the generation task, we computed an individual
 
 ## Procedure
 
-The experiment consisted of three consecutive parts: First, participants worked on an SRTT (the *training phase*), followed by a *generation task* and a postexperimental interview. 
+The experiment consisted of three consecutive parts: First, participants worked on an SRTT (the *training phase*), followed by a *generation task* and a post-experimental interview. 
 In the learning phase, participants in the permuted and random conditions performed a SRTT consisting of 6 blocks with 144 trials each (total of 864 responses). 
 Participants in the no-learning condition performed only 20 random trials to familiarize themselves with the SRTT. 
 SRTT and generation task were run on 17" CRT monitors with a screen resolution of 1024px $\times$ 768px. The viewing distance was approximately 60cm. 
@@ -304,7 +304,7 @@ Finally, participants were thanked and debriefed.
 # Results
 
 For all analyses, a significance criterion of $\alpha = .05$ was used.
-If sphericity was violated in repeated-measures ANOVAs, Greenhouse-Geiser-corrected degrees of freedom and $p$ values were used.
+If sphericity was violated in repeated-measures ANOVAs, Greenhouse-Geisser-corrected degrees of freedom and $p$ values were used.
 The raw data (as well as additional supplemental materials) are available from https://github.com/methexp/pdl1.[^analysis-software]
 
 [^analysis-software]:
@@ -382,7 +382,7 @@ The factors *material* and *block number* did not interact, `r out$full_result[[
 For the group with permuted material, some locations were presented twice within each pseudo-sequence. 
 The right panel of Figure \@ref(fig:acquisition-rt) shows the mean RTs for these two types of stimuli. A 2 (*frequency*: high vs. low) $\times$ 6 (*block number*) ANOVA revealed a main effect of *frequency*, `r out.perm$full_result$frequency`; high-frequency responses were faster than low-frequency responses. 
 The main effect of *block number* was also significant, `r out.perm$full_result$block`, but not the interaction, `r out.perm$full_result$block_frequency`.
-These findings suggest that participants in the *permuted* condition acquired some form of simple response-location frequency knowledge that benefitted their SRTT performance, and especially so for the more frequent responses.
+These findings suggest that participants in the *permuted* condition acquired some form of simple response-location frequency knowledge that benefited their SRTT performance, and especially so for the more frequent responses.
 
 ## Generation task
 
@@ -458,14 +458,14 @@ It revealed a main effect of *PD instruction*, `r out$full_result$PD_instruction
 This $I > E$ pattern suggests the presence of explicit knowledge, despite the absence of sequence information in the training material.
 
 The ANOVA also revealed an interaction of *material*  $\times$  *generation task*, `r out$full_result[["material_generation"]]`. 
-Analysing only free generation using a 3 (*material*: permuted vs. random vs. no-learning)  $\times$  2 (*PD instruction*: inclusion vs. exclusion)  $\times$  2 (*order*: inclusion first vs. exclusion first) ANOVA revealed a main effect of *material*, `r out.a$material` (and again the main effect of *PD instruction*, `r out.a$PD_instruction`).
+Analyzing only free generation using a 3 (*material*: permuted vs. random vs. no-learning)  $\times$  2 (*PD instruction*: inclusion vs. exclusion)  $\times$  2 (*order*: inclusion first vs. exclusion first) ANOVA revealed a main effect of *material*, `r out.a$material` (and again the main effect of *PD instruction*, `r out.a$PD_instruction`).
 Tukey's HSDs revealed a significant difference between *permuted* and *random*, `r tukey$full_result$Permuted_Random`, the difference between *permuted* and *no-learning* group trended to be significant, `r tukey$full_result$No_learning_Permuted`, *random* and *no-learning* groups did not differ from each other, `r tukey$full_result$No_learning_Random`.
-Analysing only cued generation revealed no effects, suggesting that the free generation task was more sensitive in picking up learning effects on generation performance.
+Analyzing only cued generation revealed no effects, suggesting that the free generation task was more sensitive in picking up learning effects on generation performance.
 
 To summarize, there was a main effect of PD instruction as well as an effect of material in the free-generation data; no effects were obtained in the cued-generation data.
 In the process-dissociation logic, the effect of PD instruction suggests the presence of explicit knowledge.
 In addition, the effect of material suggests the presence of implicit knowledge in the permuted condition.
-Next, we will apply two different PD analysis stategies to these data to investigate more formally whether, given the assumptions underlying the PD approach can be upheld, the pattern is indeed indicative of the presence of explicit and implicit knowledge.
+Next, we will apply two different PD analysis strategies to these data to investigate more formally whether, given the assumptions underlying the PD approach can be upheld, the pattern is indeed indicative of the presence of explicit and implicit knowledge.
 
 ### Ordinal PD
 
@@ -562,7 +562,7 @@ out_2nd <- apa_print(
 
 For the cued generation task, Figure \@ref(fig:was-cue-including-reversals) shows the proportion of response locations that were also presented as a cue on their respective trial.
 With three to five cues presented on each trial (and direct repetitions prohibited and excluded from analyses),
-chance level of generating a location that had just been presented equalled $3/5 = .6$.
+chance level of generating a location that had just been presented equaled $3/5 = .6$.
 
 A 3 (*material*: permuted, random, no-learning) $\times$  2 (*PD instruction*: inclusion vs. exclusion)  $\times$  2 (*block order*: inclusion first vs. exclusion first) ANOVA revealed a main effect of *material*, `r out$full_result$material`.
 Tukey's HSDs revealed a significant difference between the *permuted* and *no-learning* groups, `r tukey$full_result$No_learning_Permuted`, all other *p*s > .24.
@@ -587,7 +587,7 @@ Typically, only two locations are presented as cues on each trial to avoid infor
 In this case, the strategy to avoid generating a cue location would lead to a correct-performance rate of approximately 46% (i.e., a .5 chance to generate a correct response for 11 out of 12 triplets and a zero chance for the single reversal among the 12 triplets).
 This is rather high relative to a chance-level baseline of .33 [c.f., @fu_can_2010].
 
-To summarise, in the cued generation task, participants avoid generating a response that had been part of the cue sequence. This finding was independent of the type of training material, and it occurred even for the no-learning grooup, suggesting that it is a training-independent response tendency (i.e., a bias against generating locations present in the cue segment).
+To summarize, in the cued generation task, participants avoid generating a response that had been part of the cue sequence. This finding was independent of the type of training material, and it occurred even for the no-learning group, suggesting that it is a training-independent response tendency (i.e., a bias against generating locations present in the cue segment).
 
 The findings further suggest that, in the permuted condition, this response strategy interacted with cue properties to influence generation performance. 
 Here, cue properties vary as a function of the frequency manipulation in the permuted condition: 
@@ -698,9 +698,9 @@ We briefly sketch open research questions posed by the additional independence a
 
 ### On the independence assumptions underlying the extended model
 
-As mentioned above, the extended PD model assumes that response tendencies as modelled by $R_{\mathrm{Inclusion}}$ and $R_{\mathrm{Exclusion}}$ are independent of controlled and automatic processes. 
+As mentioned above, the extended PD model assumes that response tendencies as modeled by $R_{\mathrm{Inclusion}}$ and $R_{\mathrm{Exclusion}}$ are independent of controlled and automatic processes. 
 If this assumption is violated, parameter estimates are no longer valid measures of the underlying psychological processes. 
-This possiblity deserves to be taken seriously; in other domains, empirical violations of independence between controlled and automatic processes have been obtained [e.g., @rouder_hierarchical_2008]. 
+This possibility deserves to be taken seriously; in other domains, empirical violations of independence between controlled and automatic processes have been obtained [e.g., @rouder_hierarchical_2008]. 
 The open question is whether response tendencies can be affected by the same properties of the learning material that may also affect implicit and explicit learning.
 There are some findings in the literature that at least suggest such an interaction may well be possible. 
 For instance, participants tended to show lag effects (reflecting negative recency) in a permuted condition but not in a random condition [@boyer_processing_2005].
