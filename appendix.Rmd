@@ -7,11 +7,11 @@
 tmp <- subset(generation, included_participant & repetition == 0 & post_repetition == 0)
 
 # calculate proportion of regular transitions per participant
-agg <- aggregate(formula = correct_SOC ~ material + generation + order + PD_instruction + id, data = tmp, FUN = mean, na.rm = TRUE)
+agg <- aggregate(correct_SOC ~ material + generation + order + PD_instruction + id, data = tmp, FUN = mean, na.rm = TRUE)
 
 # calculate condition means and standard errors
-means <- aggregate(formula = cbind(M = correct_SOC) ~ material + generation + order + PD_instruction, data = agg, FUN = mean)
-SEs <- aggregate(formula = cbind(`SE` = correct_SOC) ~ material + generation + order + PD_instruction, data = agg, FUN = se)
+means <- aggregate(cbind(M = correct_SOC) ~ material + generation + order + PD_instruction, data = agg, FUN = mean)
+SEs <- aggregate(cbind(`SE` = correct_SOC) ~ material + generation + order + PD_instruction, data = agg, FUN = se)
 
 # merge means and CI width
 tab <- merge(means, SEs)

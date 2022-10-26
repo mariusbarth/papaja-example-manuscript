@@ -55,6 +55,7 @@ output            : papaja::apa6_pdf  # For DOCX try papaja::apa6_docx
 library("papaja")
 library("afex")
 library("emmeans")
+set_sum_contrasts()
 ```
 
 ```{r preferences}
@@ -240,7 +241,7 @@ N <- length(unique(generation$id))
 
 n.excluded_participants <- length(excluded_participants)
 
-tmp <- aggregate(formula = correct_SOC ~ id + sex + age, data = generation, FUN=mean)
+tmp <- aggregate(correct_SOC ~ id + sex + age, data = generation, FUN=mean)
 Sex <- table(tmp$sex)
 
 meanAge <- apa_num(mean(tmp$age), digits = 1)
@@ -352,7 +353,11 @@ tmp.perm <- acquisition[
 ]
 
 out.perm <- apa_print(
-  aov_ez(data = tmp.perm, dv = "SRI", within = c("block", "frequency"), id = "id")
+  aov_4(
+    formula = SRI ~ (block * frequency | id)
+    , data = tmp.perm
+    , fun_aggregate = mean
+  )
 )
 
 apa_lineplot(
@@ -371,7 +376,7 @@ apa_lineplot(
 
 
 out <- apa_print(
-  aov_ez(data = tmp, dv = "SRI", id = "id", between = "material", within = "block")
+  aov_4(formula = SRI ~ material + (block | id), data = tmp, fun_aggregate = mean)
 )
 ```
 
@@ -432,25 +437,28 @@ apa_barplot(
 
 # aggregate once, because many, many ANOVAs will follow
 tmp2 <- aggregate(
-  formula = correct_SOC ~ id + material + generation + order + PD_instruction
+  correct_SOC ~ id + material + generation + order + PD_instruction
   , data = tmp
   , FUN = mean
 )
 
 # ANOVA for complete design
 out <- apa_print(
-  aov_ez(data = tmp2, id = "id", dv = "correct_SOC", between = c("material", "generation", "order"), within = "PD_instruction")
+  aov_4(
+    formula = correct_SOC ~ material * generation * order + (PD_instruction | id)
+    , data = tmp2
+  )
 )
 
 # separate analysis for free-generation task
 tmp.a <- tmp2[tmp2$generation == "Free", ]
 out.a <- apa_print(
-  aov_ez(data = tmp.a, id = "id", dv = "correct_SOC", between = c("material", "order"), within = "PD_instruction")
+  aov_4(formula = correct_SOC ~ material * order + (PD_instruction | id), data = tmp.a)
 )
 
 # Post-hoc paired comparisons for free-generation group
-fit <- aov_ez(data = tmp.a, id = "id", dv = "correct_SOC", between = c("material", "order"), within = "PD_instruction")
-tukey <- apa_print(pairs(emmeans(fit, specs = "material"), adjust = "tukey"))
+fit <- aov_4(formula = correct_SOC ~ material * order + (PD_instruction | id), data = tmp.a)
+tukey <- apa_print(pairs(emmeans(fit, specs = ~ material), adjust = "tukey"))
 ```
 
 The proportions of correctly generated triplets were analysed using a 3 (*material*: permuted vs. random vs. no-learning)  $\times$  2 (*generation task*: free vs. cued)  $\times$  2 (*PD instruction*: inclusion vs. exclusion)  $\times$  2 (*order*: inclusion first vs. exclusion first) ANOVA.
@@ -543,7 +551,7 @@ apa_barplot(
 )
 
 # ANOVA for full design
-model <- aov_ez(data = tmp, id = "id", dv = "was_cue", between = c("material", "order"), within = "PD_instruction")
+model <- aov_4(formula = was_cue ~ material * order + (PD_instruction | id), data = tmp, fun_aggregate = mean)
 out <- apa_print(model)
 
 # post-hoc pairwise comparisons
@@ -552,11 +560,11 @@ tukey <- apa_print(pairs(emmeans(model, specs = "material")))
 
 # analyse blocks separately (extract only `full_result` to output object)
 out_1st <- apa_print(
-  aov_ez(data = tmp[tmp$block == "first", ], id = "id", dv = "was_cue", between = c("material", "PD_instruction"))
+  aov_4(formula = was_cue ~ material * PD_instruction + (1 | id), data = tmp[tmp$block == "first", ], fun_aggregate = mean)
 )$full_result
 
 out_2nd <- apa_print(
-  aov_ez(data = tmp[tmp$block == "second",], id = "id", dv = "was_cue", between = c("material","PD_instruction"))
+  aov_4(formula = was_cue ~ material * PD_instruction + (1 | id), data = tmp[tmp$block == "second", ], fun_aggregate = mean)
 )$full_result
 ```
 
